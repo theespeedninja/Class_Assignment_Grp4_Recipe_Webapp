@@ -1,12 +1,1164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👨‍🍳Flavor Haven</title>
-    <!-- maintain the skeleton and add your content from here -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A curated collection of authentic Kenyan and East African recipes — search, filter, and save your favourites." />
+  <meta name="keywords" content="African foods, pilau, flavours, recipes, authentic east african  Recipes"/> <!--SEO optimization-->
+  <title>Jiko Flavours</title>
+  <!--
+  These are the fonts we used for our website -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="assets/images/icon.png" type="image/x-icon" />
 </head>
 <body>
-    <!-- pick it from here -->
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="header-inner">
+      <div class="brand">
+        <a href="index.html" aria-label="Go to homepage">
+          <span class="brand-name">Jiko Flavours</span>
+        </a>
+        <p class="brand-tagline">Authentic flavours from the heart of East Africa</p>
+      </div>
+
+      <nav id="main-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#recipe-grid" class="nav-link">Recipes</a></li>
+          <li><a href="#favourites" class="nav-link">Saved(<span class="fav-count" id="fav-count">0</span>)</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+      <!--use this button to turn this header into a (if possible collapsible) side or top bar(navigation bar)-->
+      <button class="hamburger" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu"> 
+        <span class="bar"></span>
+        <span class="bar"></span> <!-- Rada ya hii repetition -->
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <h1>Discover the Soul of<br><em>Kenyan Cooking</em></h1>
+      <p class="hero-sub">From the smoky charm of Nyama Choma to the fragrant layers of Biryani — explore authentic East African recipes.</p>
+      <div class="hero-actions">
+        <a href="#recipe-grid" class="btn-primary">Browse Recipes</a>
+      </div>
+    </div>
+    <figure class="hero-image">
+      <img src="assets/images/hero-image.jpg" alt="Colourful spread of Kenyan dishes" width="600" height="400" loading="eager" />
+    </figure>
+  </section>
+
+  <main id="main-content">
+    <!-- CONTROLS - to find a specific recipe or sort the available recipes in an order of choice-->
+    <section id="controls">
+      <div class="controls-inner">
+        <h2 class="section-heading">Find Your Recipe</h2>
+
+        <!--Find using specific a description of name or ingredients used-->
+        <div class="search-wrapper">
+          <input
+            type="search"
+            id="recipe-search"
+            placeholder="Search by name or ingredient..."
+            autocomplete="off"
+          />
+          <span><button id="submit filter">Submit</button></span> <!--upon clicking this button, the specific recipe described should be filtered out and dispalyed -->
+        </div>
+
+
+        <div class="filter-group">
+          <span class="filter-label">Cuisine:</span>
+          <ul class="filter-chips" id="cuisine-filters">
+            <li><button class="chip active" data-filter="all">All</button></li>
+            <li><button class="chip" data-filter="kenyan">Kenyan</button></li>
+            <li><button class="chip" data-filter="swahili">Swahili</button></li>
+            <li><button class="chip" data-filter="coastal">Coastal Kenyan</button></li>
+            <li><button class="chip" data-filter="east-african">East African</button></li>
+            <li><button class="chip" data-filter="kenyan-indian">Kenyan / Indian</button></li>
+          </ul>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Difficulty:</span>
+          <ul class="filter-chips" id="difficulty-filters">
+            <li><button class="chip active" data-difficulty="all">All Levels</button></li>
+            <li><button class="chip" data-difficulty="easy">Easy</button></li>
+            <li><button class="chip" data-difficulty="medium">Medium</button></li>
+            <li><button class="chip" data-difficulty="hard">Hard</button></li>
+          </ul>
+        </div>
+
+        <div class="sort-wrapper">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select">
+            <option value="default">Default</option>
+            <option value="name-asc">Name A → Z</option>
+            <option value="name-desc">Name Z → A</option>
+            <option value="prep-asc">Quickest Prep First</option>
+            <option value="difficulty-asc">Easiest First</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- <!Cards, recipe cards that will appear on the front part of our webpage -->
+    <section id="recipe-grid">
+      <div class="grid-inner">
+        <p id="results-count">Showing <strong>16</strong> recipes</p>
+
+        <!-- 1. Pilau --> 
+        <article class="recipe-card" data-id="1" data-cuisine="kenyan" data-difficulty="medium" data-prep="20" data-cook="45" data-servings="6">
+          <figure class="card-image">
+            <img src="assets/images/pilau.jpg" alt="Steaming Kenyan Pilau rice" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="1" aria-pressed="false">♡</button>
+            <span class="difficulty-badge medium">Medium</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Pilau</h3>
+            <p class="card-desc">Fragrant spiced rice slow-cooked with tender beef and pilau masala.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>20 min</strong></li>
+              <li>Cook: <strong>45 min</strong></li>
+              <li>Serves: <strong>6</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="1"><a href="#modal-1">View Full Recipe</a></button> <!--what if we used a <a> here?-->
+          </div>
+        </article>
+
+        <!-- 2. Nyama Choma -->
+        <article class="recipe-card" data-id="2" data-cuisine="kenyan" data-difficulty="easy" data-prep="15" data-cook="60" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/nyamachoma.jpg" alt="Grilled Nyama Choma" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="2" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Nyama Choma</h3>
+            <p class="card-desc">Kenya's famous charcoal-grilled meat with smoky flavour.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>15 min</strong></li>
+              <li>Cook: <strong>60 min</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="2">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 3. Ugali and Sukuma Wiki -->
+        <article class="recipe-card" data-id="3" data-cuisine="kenyan" data-difficulty="easy" data-prep="10" data-cook="30" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/Ugali_&_Sukuma_Wiki.jpg" alt="Ugali and Sukuma Wiki" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="3" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Ugali & Sukuma Wiki</h3>
+            <p class="card-desc">Classic Kenyan staple of maize porridge and sautéed greens.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>30 min</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="3">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 4. Githeri -->
+        <article class="recipe-card" data-id="4" data-cuisine="kenyan" data-difficulty="easy" data-prep="10" data-cook="50" data-servings="5">
+          <figure class="card-image">
+            <img src="assets/images/biryani.jpg" alt="Githeri stew" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="4" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Githeri</h3>
+            <p class="card-desc">Hearty boiled maize and beans with tomatoes and onions.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>50 min</strong></li>
+              <li>Serves: <strong>5</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="4">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 5. Mukimo -->
+        <article class="recipe-card" data-id="5" data-cuisine="kenyan" data-difficulty="medium" data-prep="15" data-cook="40" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/biryani.jpg" alt="Mukimo mash" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="5" aria-pressed="false">♡</button>
+            <span class="difficulty-badge medium">Medium</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Mukimo</h3>
+            <p class="card-desc">Traditional Kikuyu mash of potatoes, peas, maize and greens.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>15 min</strong></li>
+              <li>Cook: <strong>40 min</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="5">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 6. Biryani -->
+        <article class="recipe-card" data-id="6" data-cuisine="swahili" data-difficulty="hard" data-prep="30" data-cook="60" data-servings="6">
+          <figure class="card-image">
+            <img src="assets/images/biryani.jpg" alt="Swahili Biryani" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="6" aria-pressed="false">♡</button>
+            <span class="difficulty-badge hard">Hard</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Swahili</span>
+            <h3 class="card-title">Biryani</h3>
+            <p class="card-desc">Fragrant layered rice with chicken and aromatic spices.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>30 min</strong></li>
+              <li>Cook: <strong>60 min</strong></li>
+              <li>Serves: <strong>6</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="6">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 7. Mandazi -->
+        <article class="recipe-card" data-id="7" data-cuisine="kenyan" data-difficulty="easy" data-prep="15" data-cook="20" data-servings="12">
+          <figure class="card-image">
+            <img src="assets/images/mandazi.jpg" alt="Mandazi doughnuts" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="7" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Mandazi</h3>
+            <p class="card-desc">Soft coconut milk doughnuts — a popular Kenyan snack.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>15 min</strong></li>
+              <li>Cook: <strong>20 min</strong></li>
+              <li>Serves: <strong>12</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="7">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 8. Chapati -->
+        <article class="recipe-card" data-id="8" data-cuisine="kenyan" data-difficulty="medium" data-prep="20" data-cook="30" data-servings="8">
+          <figure class="card-image">
+            <img src="assets/images/chapati.jpg" alt="Kenyan Chapati" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="8" aria-pressed="false">♡</button>
+            <span class="difficulty-badge medium">Medium</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Chapati</h3>
+            <p class="card-desc">Flaky layered flatbread, perfect with stew or chai.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>20 min</strong></li>
+              <li>Cook: <strong>30 min</strong></li>
+              <li>Serves: <strong>8</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="8">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 9. Samosa -->
+        <article class="recipe-card" data-id="9" data-cuisine="kenyan-indian" data-difficulty="hard" data-prep="30" data-cook="25" data-servings="20">
+          <figure class="card-image">
+            <img src="assets/images/samosa.jpg" alt="Crispy Samosas" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="9" aria-pressed="false">♡</button>
+            <span class="difficulty-badge hard">Hard</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan / Indian</span>
+            <h3 class="card-title">Samosa</h3>
+            <p class="card-desc">Crispy pastries filled with spiced mince and peas.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>30 min</strong></li>
+              <li>Cook: <strong>25 min</strong></li>
+              <li>Serves: <strong>20</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="9">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 10. Matoke -->
+        <article class="recipe-card" data-id="10" data-cuisine="east-african" data-difficulty="easy" data-prep="10" data-cook="40" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/matoke.jpg" alt="Matoke stew" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="10" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">East African</span>
+            <h3 class="card-title">Matoke</h3>
+            <p class="card-desc">Green bananas stewed with beef in rich tomato sauce.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>40 min</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="10">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 11. Kachumbari -->
+        <article class="recipe-card" data-id="11" data-cuisine="kenyan" data-difficulty="easy" data-prep="10" data-cook="0" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/kachumbari.jpg" alt="Fresh Kachumbari" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="11" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Kachumbari</h3>
+            <p class="card-desc">Fresh tomato, onion and coriander salsa.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>None</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="11">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 12. Fish Fry -->
+        <article class="recipe-card" data-id="12" data-cuisine="coastal" data-difficulty="medium" data-prep="15" data-cook="25" data-servings="3">
+          <figure class="card-image">
+            <img src="assets/images/fishfry.jpg" alt="Coastal Fish Fry" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="12" aria-pressed="false">♡</button>
+            <span class="difficulty-badge medium">Medium</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Coastal Kenyan</span>
+            <h3 class="card-title">Fish Fry</h3>
+            <p class="card-desc">Crispy deep-fried fish with garlic and spices.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>15 min</strong></li>
+              <li>Cook: <strong>25 min</strong></li>
+              <li>Serves: <strong>3</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="12">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 13. Coconut Rice -->
+        <article class="recipe-card" data-id="13" data-cuisine="swahili" data-difficulty="easy" data-prep="10" data-cook="25" data-servings="4">
+          <figure class="card-image">
+            <img src="assets/images/coconut rice.jpg" alt="Wali wa Nazi" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="13" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Swahili</span>
+            <h3 class="card-title">Coconut Rice</h3>
+            <p class="card-desc">Creamy rice cooked in coconut milk.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>25 min</strong></li>
+              <li>Serves: <strong>4</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="13">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 14. Beef Stew -->
+        <article class="recipe-card" data-id="14" data-cuisine="kenyan" data-difficulty="medium" data-prep="15" data-cook="50" data-servings="5">
+          <figure class="card-image">
+            <img src="assets/images/beef stew.jpg" alt="Kenyan Beef Stew" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="14" aria-pressed="false">♡</button>
+            <span class="difficulty-badge medium">Medium</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Beef Stew</h3>
+            <p class="card-desc">Rich beef stew with carrots and potatoes.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>15 min</strong></li>
+              <li>Cook: <strong>50 min</strong></li>
+              <li>Serves: <strong>5</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="14">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 15. Fried Tilapia -->
+        <article class="recipe-card" data-id="15" data-cuisine="kenyan" data-difficulty="easy" data-prep="10" data-cook="20" data-servings="2">
+          <figure class="card-image">
+            <img src="assets/images/fried tilapia.jpg" alt="Fried Tilapia" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="15" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Fried Tilapia</h3>
+            <p class="card-desc">Crispy pan-fried whole tilapia.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>10 min</strong></li>
+              <li>Cook: <strong>20 min</strong></li>
+              <li>Serves: <strong>2</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="15">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- 16. Arrowroots (Nduma) -->
+        <article class="recipe-card" data-id="16" data-cuisine="kenyan" data-difficulty="easy" data-prep="5" data-cook="30" data-servings="3">
+          <figure class="card-image">
+            <img src="assets/images/arrowroot.jpg" alt="Boiled Nduma" width=300px height=200px loading="lazy" />
+            <button class="fav-btn" data-recipe-id="16" aria-pressed="false">♡</button>
+            <span class="difficulty-badge easy">Easy</span>
+          </figure>
+          <div class="card-body">
+            <span class="cuisine-tag">Kenyan</span>
+            <h3 class="card-title">Arrowroots (Nduma)</h3>
+            <p class="card-desc">Simple boiled arrowroots — a classic Kenyan breakfast.</p>
+            <ul class="card-meta">
+              <li>Prep: <strong>5 min</strong></li>
+              <li>Cook: <strong>30 min</strong></li>
+              <li>Serves: <strong>3</strong></li>
+            </ul>
+            <button class="btn btn-view-recipe" data-recipe-id="16">View Full Recipe</button>
+          </div>
+        </article>
+
+        <!-- No results message -->
+        <div id="no-results" class="no-results" hidden>
+          <h3>No recipes found</h3>
+          <p>Try different search terms or clear filters.</p>
+          <button class="btn btn-outline" id="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- You find your favorie or saved recipes here -->
+    <section id="favourites">
+      <div class="section-inner">
+        <h2 class="section-heading">Your Saved Recipes</h2>
+        <div id="favourites-empty" class="favourites-empty">
+          <p>You haven't saved any recipes yet.</p>
+        </div>
+        <ul id="favourites-list" class="favourites-list"></ul>
+        <button id="clear-favourites-btn" class="btn btn-outline" hidden>Clear All Saved</button>
+      </div>
+    </section>   
+
+
+      <!--Here we get a description of each recipe,with details, ingredients, directions-->
+
+  <!-- 1. Pilau -->
+  <dialog id="modal-1" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image">
+          <img src="assets/images/pilau.jpg" alt="A steaming pot of Kenyan Pilau" width="600" height="350" loading="lazy" />
+        </figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Pilau</h2>
+          <p class="modal-description">Fragrant spiced rice slow-cooked with tender beef, caramelised onions, and a rich blend of pilau masala — a celebrated Kenyan celebration dish traditionally served at weddings and festive gatherings.</p>
+          <ul class="modal-meta-pills">
+            <li><span aria-hidden="true">⏱</span> Prep: <strong>20 min</strong></li>
+            <li><span aria-hidden="true"></span> Cook: <strong>45 min</strong></li>
+            <li><span aria-hidden="true"></span> Serves: <strong>6</strong></li>
+            <li><span aria-hidden="true"></span> Difficulty: <strong>Medium</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>500 g basmati or long-grain rice</li>
+          <li>400 g beef (cubed)</li>
+          <li>2 tbsp pilau masala spice mix</li>
+          <li>2 large onions, thinly sliced</li>
+          <li>4 cloves garlic, minced</li>
+          <li>1 tbsp fresh ginger, grated</li>
+          <li>3 tbsp cooking oil</li>
+          <li>Salt to taste</li>
+          <li>1 litre water or beef stock</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Heat oil in a heavy pot over medium heat. Fry onions until deeply golden and caramelised — about 15 minutes.</li>
+          <li>Add garlic and ginger; stir-fry for 2 minutes until fragrant.</li>
+          <li>Add beef and pilau masala. Brown the meat on all sides, about 8 minutes.</li>
+          <li>Wash the rice until the water runs clear, then add to the pot.</li>
+          <li>Pour in the water or stock. Season with salt. Bring to the boil.</li>
+          <li>Reduce heat to low, cover tightly, and simmer for 25–30 minutes until the rice is cooked and liquid is absorbed.</li>
+          <li>Let it rest, covered, for 5 minutes before serving. Garnish with fresh coriander and serve with kachumbari.</li>
+        </ol>
+      </section>
+      <section class="modal-section modal-tips">
+        <h3>Chef's Tips</h3>
+        <ul>
+          <li>The key to Pilau is deeply caramelised onions — don't rush this step.</li>
+          <li>Use whole spices (cardamom, cloves, cinnamon, cumin) to make your own pilau masala for extra depth.</li>
+          <li>Soaking the rice for 30 minutes before cooking gives fluffier results.</li>
+        </ul>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="1"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 2. Nyama Choma -->
+  <dialog id="modal-2" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image">
+          <img src="assets/images/nyamachoma.jpg" alt="Charcoal-grilled Nyama Choma" width="600" height="350" loading="lazy" />
+        </figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Nyama Choma</h2>
+          <p class="modal-description">Kenya's iconic grilled meat — smoky, tender, and best enjoyed outdoors with cold drinks, friends, and kachumbari.</p>
+          <ul class="modal-meta-pills">
+            <li><span aria-hidden="true">⏱</span> Prep: <strong>15 min</strong></li>
+            <li><span aria-hidden="true"></span> Cook: <strong>60 min</strong></li>
+            <li><span aria-hidden="true"></span> Serves: <strong>4</strong></li>
+            <li><span aria-hidden="true"></span> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>1 kg goat or beef (bone-in cuts work best)</li>
+          <li>1 tsp coarse salt</li>
+          <li>Juice of 1 lemon</li>
+          <li>Kachumbari (fresh tomato-onion salsa) to serve</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Cut meat into large pieces. Rub with salt and drizzle lemon juice over all sides.</li>
+          <li>Light charcoal and allow to reach a steady glowing heat (no open flames).</li>
+          <li>Place meat on the grill. Cook slowly over medium heat, turning every 10–15 minutes.</li>
+          <li>Grill for 45–60 minutes until the meat is cooked through with a smoky, slightly charred exterior.</li>
+          <li>Rest the meat for 5 minutes. Chop into smaller pieces and serve immediately with kachumbari and ugali.</li>
+        </ol>
+      </section>
+      <section class="modal-section modal-tips">
+        <h3>Chef's Tips</h3>
+        <ul>
+          <li>Patience is everything — low, slow charcoal heat is key to authentic Nyama Choma.</li>
+          <li>Do not over-marinate; purists use only salt and lemon to let the meat speak for itself.</li>
+        </ul>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="2"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 3. Ugali & Sukuma Wiki -->
+  <dialog id="modal-3" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/Ugali_&_Sukuma_Wiki.jpg" alt="Ugali and Sukuma Wiki" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Ugali & Sukuma Wiki</h2>
+          <p class="modal-description">Kenya's everyday staple — firm maize porridge paired with nutritious sautéed kale.</p>
+          <ul class="modal-meta-pills">
+            <li><span aria-hidden="true">⏱</span> Prep: <strong>10 min</strong></li>
+            <li><span aria-hidden="true"></span> Cook: <strong>30 min</strong></li>
+            <li><span aria-hidden="true"></span> Serves: <strong>4</strong></li>
+            <li><span aria-hidden="true"></span> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>2 cups maize flour (unga wa mahindi)</li>
+          <li>4 cups water</li>
+          <li>1 bunch kale (sukuma wiki), finely sliced</li>
+          <li>2 medium tomatoes, diced</li>
+          <li>1 onion, diced</li>
+          <li>2 tbsp cooking oil</li>
+          <li>Salt to taste</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li><strong>Sukuma Wiki:</strong> Heat oil in a pan. Fry onions until soft. Add tomatoes and cook for 5 minutes.</li>
+          <li>Add sliced kale, stir well, cover and cook for 8–10 minutes on medium heat. Season with salt.</li>
+          <li><strong>Ugali:</strong> Bring 4 cups of salted water to the boil in a heavy pot.</li>
+          <li>Reduce heat to medium. Gradually pour in the maize flour while stirring continuously to prevent lumps.</li>
+          <li>Keep stirring vigorously with a wooden spoon for 10–12 minutes until the ugali is stiff, smooth, and pulls away from the sides of the pot.</li>
+          <li>Serve ugali moulded onto plates alongside the sukuma wiki.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="3"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 4. Githeri -->
+  <dialog id="modal-4" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/githeri.jpg" alt="Githeri stew" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Githeri</h2>
+          <p class="modal-description">A nourishing mix of boiled maize and beans sautéed with tomatoes and onions.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>10 min</strong></li><li> Cook: <strong>50 min</strong></li><li> Serves: <strong>5</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>2 cups dried maize (soaked overnight)</li>
+          <li>1 cup dried kidney beans (soaked overnight)</li>
+          <li>2 medium tomatoes, diced</li>
+          <li>1 onion, diced</li>
+          <li>2 tbsp cooking oil</li>
+          <li>Salt and pepper to taste</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Boil the soaked maize and beans together in salted water for 40–45 minutes until tender.</li>
+          <li>In a separate pan, fry onions in oil until golden. Add tomatoes and cook down to a sauce.</li>
+          <li>Add the drained boiled maize and beans to the sauce. Stir together and simmer for 5 minutes.</li>
+          <li>Season with salt and pepper and serve hot.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="4"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 5. Mukimo -->
+  <dialog id="modal-5" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/mukimo.jpg" alt="Mukimo mash" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Mukimo</h2>
+          <p class="modal-description">A colourful Kikuyu mash of potatoes, peas, maize and greens — hearty and comforting.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>15 min</strong></li><li> Cook: <strong>40 min</strong></li><li> Serves: <strong>4</strong></li><li> Difficulty: <strong>Medium</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>500 g potatoes, peeled and quartered</li>
+          <li>1 cup green peas</li>
+          <li>1 cup boiled maize kernels</li>
+          <li>1 cup pumpkin leaves or spinach, chopped</li>
+          <li>Salt to taste</li>
+          <li>2 tbsp butter or oil (optional)</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Boil potatoes, peas, and maize in salted water until the potatoes are completely soft.</li>
+          <li>Add the chopped greens and cook for a further 3–4 minutes.</li>
+          <li>Drain most of the water, leaving a little for mashing.</li>
+          <li>Mash everything together until well combined. Add butter if desired. Season with salt.</li>
+          <li>Serve as a main dish or side alongside stewed meat.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="5"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 6. Biryani -->
+  <dialog id="modal-6" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/biryani.jpg" alt="Swahili Biryani" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Swahili / Indian</span>
+          <h2 class="modal-title">Biryani</h2>
+          <p class="modal-description">A grand layered dish of marinated chicken and fragrant basmati rice — the jewel of the Swahili coast kitchen.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>30 min</strong></li><li> Cook: <strong>60 min</strong></li><li> Serves: <strong>6</strong></li><li>Difficulty: <strong>Hard</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>600 g chicken pieces</li>
+          <li>3 cups basmati rice</li>
+          <li>200 ml plain yogurt</li>
+          <li>2 large onions, thinly sliced</li>
+          <li>4 cloves garlic + 1 tbsp ginger (paste)</li>
+          <li>2 tsp biryani spice mix (or garam masala)</li>
+          <li>1 tsp turmeric</li>
+          <li>Saffron or food colouring dissolved in 3 tbsp warm milk</li>
+          <li>4 tbsp ghee or oil</li>
+          <li>Salt to taste</li>
+          <li>Fresh coriander and fried onions to garnish</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Marinate chicken in yogurt, garlic-ginger paste, biryani spice, turmeric, and salt for at least 1 hour (overnight is best).</li>
+          <li>Fry sliced onions in ghee until deeply golden; set half aside for garnish.</li>
+          <li>Cook marinated chicken in the remaining fried onions over medium heat until tender, about 20 minutes.</li>
+          <li>Par-cook basmati rice in salted boiling water until 70% done. Drain well.</li>
+          <li>In a large heavy pot, layer half the rice, then all the chicken, then the remaining rice.</li>
+          <li>Drizzle the saffron milk and remaining ghee over the top layer.</li>
+          <li>Cover tightly with foil then the lid. Cook on the lowest heat for 25–30 minutes (dum cooking).</li>
+          <li>Gently fold through before serving. Garnish with fried onions and fresh coriander.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="6"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 7. Mandazi -->
+  <dialog id="modal-7" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/mandazi.jpg" alt="Golden Mandazi doughnuts" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Mandazi</h2>
+          <p class="modal-description">Soft, lightly sweet East African doughnuts made with coconut milk — a beloved breakfast and street-food snack.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>15 min</strong></li><li> Cook: <strong>20 min</strong></li><li> Serves: <strong>12</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>3 cups all-purpose flour</li>
+          <li>200 ml coconut milk</li>
+          <li>3 tbsp sugar</li>
+          <li>1 tsp instant yeast</li>
+          <li>1 tsp cardamom powder</li>
+          <li>Pinch of salt</li>
+          <li>Oil for deep frying</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Mix flour, sugar, yeast, cardamom, and salt in a bowl. Gradually add coconut milk to form a soft dough.</li>
+          <li>Knead for 5–8 minutes until smooth and elastic.</li>
+          <li>Cover and let rise in a warm place for 45 minutes until doubled.</li>
+          <li>Roll out on a floured surface to about 1 cm thick. Cut into triangles or squares.</li>
+          <li>Heat oil to 170°C. Fry mandazi in batches for 2–3 minutes each side until golden brown.</li>
+          <li>Drain on paper towels. Serve warm with chai (tea).</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="7"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 8. Chapati -->
+  <dialog id="modal-8" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/chapati.jpg" alt="Kenyan Chapati flatbreads" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Chapati</h2>
+          <p class="modal-description">Flaky, layered Kenyan flatbread — hand-rolled and pan-fried to golden perfection.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>20 min</strong></li><li> Cook: <strong>30 min</strong></li><li> Serves: <strong>8</strong></li><li> Difficulty: <strong>Medium</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>3 cups all-purpose flour</li>
+          <li>3 tbsp vegetable oil (plus extra for frying)</li>
+          <li>1 cup warm water</li>
+          <li>1 tsp salt</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Combine flour and salt. Rub in 2 tbsp oil. Gradually add warm water, kneading to form a soft, smooth dough.</li>
+          <li>Rest the dough covered for 20 minutes.</li>
+          <li>Divide into 8 equal balls. Roll each ball into a thin circle.</li>
+          <li>Brush with a little oil, fold in half, brush again, fold in quarters. Roll out again to a round.</li>
+          <li>Cook on a hot dry pan (or with a little oil) for 2–3 minutes per side until golden spots appear.</li>
+          <li>Keep warm wrapped in a clean cloth until serving.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="8">Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 9. Samosa -->
+  <dialog id="modal-9" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/samosa.jpg" alt="Crispy Samosas" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan / Indian</span>
+          <h2 class="modal-title">Samosa</h2>
+          <p class="modal-description">Crispy triangular pastries packed with spiced minced beef and peas — a beloved Kenyan party snack.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>30 min</strong></li><li> Cook: <strong>25 min</strong></li><li> Serves: <strong>20</strong></li><li> Difficulty: <strong>Hard</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>20 samosa pastry wrappers (or spring roll pastry)</li>
+          <li>300 g minced beef</li>
+          <li>½ cup green peas</li>
+          <li>1 onion, finely diced</li>
+          <li>2 tsp cumin + 1 tsp coriander powder</li>
+          <li>½ tsp chilli powder</li>
+          <li>Salt to taste</li>
+          <li>Oil for deep frying</li>
+          <li>Flour paste (2 tbsp flour + water) for sealing</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Fry onions until soft. Add mince and cook until browned. Add spices, peas, and salt. Cook 5 more minutes. Cool completely.</li>
+          <li>Lay a pastry wrapper flat. Place a spoonful of filling near one end.</li>
+          <li>Fold into a triangle, tucking the pastry tightly around the filling. Seal the edge with flour paste.</li>
+          <li>Deep fry in oil at 170°C for 3–4 minutes until golden and crispy.</li>
+          <li>Drain on paper towels. Serve with tamarind or chilli sauce.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="9"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 10. Matoke -->
+  <dialog id="modal-10" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/matoke.jpg " alt="Matoke green banana stew" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">East African</span>
+          <h2 class="modal-title">Matoke</h2>
+          <p class="modal-description">Green bananas simmered in a rich beef and tomato stew — a comforting East African classic.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>10 min</strong></li><li> Cook: <strong>40 min</strong></li><li> Serves: <strong>4</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>6 green bananas (matoke), peeled and halved</li>
+          <li>300 g beef, cubed</li>
+          <li>2 medium tomatoes, diced</li>
+          <li>1 onion, diced</li>
+          <li>2 tbsp oil</li>
+          <li>Salt and pepper to taste</li>
+          <li>Water or stock as needed</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Fry onions in oil until golden. Add beef and brown on all sides.</li>
+          <li>Add tomatoes and cook until they break down into a sauce, about 8 minutes.</li>
+          <li>Add the peeled green bananas and enough water or stock to just cover.</li>
+          <li>Cover and simmer for 25–30 minutes until bananas are tender and the stew has thickened.</li>
+          <li>Season and serve hot.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="10"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 11. Kachumbari -->
+  <dialog id="modal-11" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/kachumbari.jpg" alt="Fresh Kachumbari salad" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Kachumbari</h2>
+          <p class="modal-description">A bright, zesty fresh salsa of tomatoes, onions, coriander, and lemon — no cooking required.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>10 min</strong></li><li> Cook: <strong>No cooking</strong></li><li> Serves: <strong>4</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>3 medium ripe tomatoes, finely diced</li>
+          <li>1 red onion, finely diced</li>
+          <li>Juice of 1 lemon</li>
+          <li>Small bunch fresh coriander, chopped</li>
+          <li>½ fresh chilli, finely chopped (optional)</li>
+          <li>Salt to taste</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Finely dice tomatoes and onion. Place in a mixing bowl.</li>
+          <li>Add chopped coriander and chilli if using.</li>
+          <li>Squeeze over the lemon juice, season with salt, and toss everything together.</li>
+          <li>Taste and adjust seasoning. Serve immediately or chill for 15 minutes.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="11"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 12. Fish Fry -->
+  <dialog id="modal-12" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/fishfry.jpg" alt="Coastal Kenyan Fish Fry" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Coastal Kenyan</span>
+          <h2 class="modal-title">Fish Fry</h2>
+          <p class="modal-description">Fresh fish marinated in garlic, lemon, and spices — then deep-fried to crispy golden perfection.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>15 min</strong></li><li> Cook: <strong>25 min</strong></li><li> Serves: <strong>3</strong></li><li> Difficulty: <strong>Medium</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>3 whole fish (tilapia or snapper), cleaned and scored</li>
+          <li>4 cloves garlic, minced</li>
+          <li>Juice of 1 lemon</li>
+          <li>1 tsp cumin + 1 tsp coriander powder</li>
+          <li>½ tsp turmeric</li>
+          <li>Salt and pepper to taste</li>
+          <li>Oil for deep frying</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Score the fish 3–4 times on each side. Rub with garlic, lemon juice, spices, and salt. Marinate 15 minutes.</li>
+          <li>Heat oil in a deep pan to 175°C.</li>
+          <li>Carefully lower the fish into the oil. Fry for 8–10 minutes until cooked through and golden.</li>
+          <li>Drain on paper towels. Serve with coconut rice, kachumbari, and lemon wedges.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="12"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 13. Coconut Rice -->
+  <dialog id="modal-13" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/coconut rice.jpg" alt="Swahili Coconut Rice" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Swahili</span>
+          <h2 class="modal-title">Coconut Rice <span lang="sw">(Wali wa Nazi)</span></h2>
+          <p class="modal-description">Fragrant Swahili coast rice cooked entirely in creamy coconut milk — simple yet luxurious.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>10 min</strong></li><li> Cook: <strong>25 min</strong></li><li> Serves: <strong>4</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>2 cups long-grain rice, washed</li>
+          <li>400 ml coconut milk</li>
+          <li>200 ml water</li>
+          <li>1 tsp salt</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Combine coconut milk, water, and salt in a pot. Bring to the boil.</li>
+          <li>Add the washed rice, stir once, and reduce heat to low.</li>
+          <li>Cover and simmer for 18–20 minutes until rice is cooked and liquid absorbed.</li>
+          <li>Fluff with a fork. Serve as a side to fish, stew, or curry.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="13"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 14. Beef Stew -->
+  <dialog id="modal-14" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/beef stew.jpg" alt="Kenyan Beef Stew" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Beef Stew</h2>
+          <p class="modal-description">A deeply flavourful Kenyan beef stew with chunky carrots, potatoes, and tomatoes.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>15 min</strong></li><li> Cook: <strong>50 min</strong></li><li> Serves: <strong>5</strong></li><li> Difficulty: <strong>Medium</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>500 g beef stew cuts</li>
+          <li>2 large carrots, chopped</li>
+          <li>2 medium potatoes, cubed</li>
+          <li>2 tomatoes, diced</li>
+          <li>1 onion, diced</li>
+          <li>2 tbsp oil</li>
+          <li>Salt, pepper, and mixed spice to taste</li>
+          <li>500 ml water or beef stock</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Fry onions in oil until golden. Add beef and brown all sides for about 8 minutes.</li>
+          <li>Add tomatoes and cook down into a sauce for 5 minutes. Season with spices.</li>
+          <li>Add water or stock, bring to boil, then reduce heat and simmer for 20 minutes.</li>
+          <li>Add carrots and potatoes. Continue simmering for 20 more minutes until vegetables are tender and the stew has thickened.</li>
+          <li>Adjust seasoning and serve with ugali or chapati.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="14"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 15. Fried Tilapia -->
+  <dialog id="modal-15" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/fried tilapia.jpg" alt="Pan-fried Tilapia" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Fried Tilapia</h2>
+          <p class="modal-description">Whole tilapia simply seasoned with salt and lemon, then pan-fried to a crisp — a Lake Victoria classic.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>10 min</strong></li><li> Cook: <strong>20 min</strong></li><li> Serves: <strong>2</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>2 whole tilapia, cleaned and scored</li>
+          <li>Juice of 1 lemon</li>
+          <li>1 tsp salt</li>
+          <li>½ cup cooking oil</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Score the tilapia 3 times on each side. Rub with salt and lemon juice. Rest for 10 minutes.</li>
+          <li>Heat oil in a large frying pan over medium-high heat.</li>
+          <li>Fry the fish for 7–8 minutes on each side until golden and crispy.</li>
+          <li>Serve immediately with ugali, sukuma wiki, and kachumbari.</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="15"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  <!-- 16. Arrowroots (Nduma) -->
+  <dialog id="modal-16" class="recipe-modal">
+    <div class="modal-inner">
+      <button class="modal-close">✕</button>
+      <header class="modal-header">
+        <figure class="modal-image"><img src="assets/images/arrowroot.jpg" alt="Boiled Nduma arrowroots" width="600" height="350" loading="lazy" /></figure>
+        <div class="modal-meta-header">
+          <span class="cuisine-tag">Kenyan</span>
+          <h2 class="modal-title">Arrowroots <span lang="sw">(Nduma)</span></h2>
+          <p class="modal-description">Humble boiled arrowroots — a treasured Kenyan breakfast staple enjoyed with tea across the country.</p>
+          <ul class="modal-meta-pills">
+            <li>⏱ Prep: <strong>5 min</strong></li><li> Cook: <strong>30 min</strong></li><li> Serves: <strong>3</strong></li><li> Difficulty: <strong>Easy</strong></li>
+          </ul>
+        </div>
+      </header>
+      <section class="modal-section">
+        <h3>Ingredients</h3>
+        <ul class="ingredients-list">
+          <li>500 g arrowroots (nduma), peeled</li>
+          <li>Water to cover</li>
+          <li>1 tsp salt</li>
+        </ul>
+      </section>
+      <section class="modal-section">
+        <h3>Directions</h3>
+        <ol class="directions-list">
+          <li>Peel arrowroots and cut into large chunks if very large.</li>
+          <li>Place in a pot, cover with water, and add salt.</li>
+          <li>Bring to the boil, then reduce heat and simmer for 25–30 minutes until a fork pierces through easily.</li>
+          <li>Drain and serve hot with Kenyan chai (black tea with milk and sugar).</li>
+        </ol>
+      </section>
+      <button class="btn btn-favourite-modal" data-recipe-id="16"> Save to Favourites</button>
+    </div>
+  </dialog>
+
+  </main>
+
+  
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">🍲</span>
+        <span class="brand-name">Jiko Flavours</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#recipe-grid">Recipes</a></li>
+          <li><a href="#cuisine-guide">Cuisines</a></li>
+          <li><a href="#favourites">Saved Recipes</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+      <p class="copyright"><small>&copy; 2025 Jiko Flavours — Student Project</small></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
