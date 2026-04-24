@@ -299,10 +299,11 @@ for (let i = 0; i < modalFavButtons.length; i++) {
  
 // Reset everything 
 clearFavsBtn.addEventListener("click", function() {
-  for (let i = 0; i < favourites.length; i++) {
-    updateFavButton(favourites[i]);
-  }
+  let oldFavs = favourites;
   favourites = [];
+  for (let i = 0; i < oldFavs.length; i++) {
+    updateFavButton(oldFavs[i]);
+  }
   updateFavCount();
   renderFavouritesList();
 });
