@@ -23,7 +23,7 @@ let activeCuisine = 'all';
 let activeDifficulty = 'all';
 
 //Array to Store users favorites
-let favorites = [];
+let favourites = [];
 
 // When a user clicks the submit button, an Event listener to track the search and filter
 submitButton.addEventListener("click", () => {
