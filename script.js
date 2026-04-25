@@ -288,14 +288,14 @@ for (let i = 0; i < heartButtons.length; i++) {
 }
  
 // Save to Favourites
-let modalFavButtons = document.querySelectorAll(".btn-favourite-modal");
- 
-for (let i = 0; i < modalFavButtons.length; i++) {
-  modalFavButtons[i].addEventListener("click", function() {
-    let recipeId = modalFavButtons[i].getAttribute("data-recipe-id");
+// Instead of attaching to each button one by one, we listen on the whole
+// document — this way it works for every modal without needing to list them
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("btn-favourite-modal")) {
+    let recipeId = e.target.getAttribute("data-recipe-id");
     toggleFavourite(recipeId);
-  });
-}
+  }
+});
  
 // Reset everything 
 clearFavsBtn.addEventListener("click", function() {
