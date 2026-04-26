@@ -31,7 +31,8 @@ h1, h2, h3, .brand-name {
 }
 
 /* 2. HEADER & NAVIGATION */
-header {
+/* Only the site header at the top of the page should be sticky */
+#site-header {
   background: var(--white);
   padding: 1rem 5%;
   position: sticky;
@@ -293,26 +294,139 @@ header {
   overflow-y: auto;
   border-radius: 24px;
   position: relative;
-  padding: 3rem;
+  padding: 0; /* Remove padding from the whole box */
 }
 
+/* Header stays as part of the normal page flow — NOT sticky */
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
+  margin-bottom: 0;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  position: static; /* This stops it from sticking to the top */
+}
+
+/* Controls the image size so it doesn't take over the whole modal */
+.modal-image {
+  flex: 0 0 280px;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Image fills the left side of the header naturally */
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  border-radius: 0; /* No separate rounding — the parent handles it */
+  display: block;
+}
+
+/* Recipe info panel on the right side of the header */
+.modal-meta-header {
+  flex: 1;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: var(--white);
+}
+
+/* All sections below the header get padding since modal-inner no longer has it */
+.modal-section {
+  padding: 1.5rem 2.5rem;
+  border-top: 1px solid #eee;
+}
+
+/* Save and Return buttons at the bottom of the modal */
+.article-controls {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2.5rem 2rem;
+  border-top: 1px solid #eee;
+}
+
+/* Style for the Save to Favourites button */
+.btn-favourite-modal {
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-favourite-modal:hover {
+  background: #bf4d00;
+}
+
+/* Style for the Return to Home button/link */
+.btn-return-home {
+  background: white;
+  color: var(--secondary-green);
+  border: 2px solid var(--secondary-green);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-return-home:hover {
+  background: var(--secondary-green);
+  color: white;
+}
+
+/* Makes the prep/cook/serves pills sit in a row */
+.modal-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+/* On small screens, stack the image above the text */
+@media (max-width: 600px) {
+  .modal-header {
+    flex-direction: column;
+  }
+
+  .modal-image {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Close button — dark so it's visible against the white modal */
 .modal-close {
   position: absolute;
-  top: 25px; right: 25px;
-  background: #f0f0f0;
+  top: 15px;
+  right: 15px;
+  background: #2c3e50;
+  color: white;
   border: none;
-  width: 45px; height: 45px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
   transition: var(--transition);
 }
 
 .modal-close:hover {
-  background: #e0e0e0;
+  background: #1a252f;
 }
 
 [hidden] {
